@@ -1,17 +1,17 @@
 gradlew.bat --version
 
-
-C:\java\downcons\gradle\wrapper\gradle-wrapper.properties
-
-#Sat Mar 25 00:44:04 PKT 2017
-distributionBase=GRADLE_USER_HOME
-distributionPath=wrapper/dists
-zipStoreBase=GRADLE_USER_HOME
-zipStorePath=wrapper/dists
-distributionUrl=https\://services.gradle.org/distributions/gradle-3.1-bin.zip
-
-
 https://docs.gradle.org/2.4/release-notes.html
 http://hsqldb.org/doc/2.0/guide/index.html
 
 plugin Database navigator
+
+----
+
+You have to set the system property "java.home" and the environment variable JAVA_HOME to a valid JDK.
+
+I have a file called gradle.properties at the root of my project with the following property:
+
+org.gradle.java.home=C:\\Program Files\\Java\\jdk1.8.0_74
+org.gradle.java.home needs to point to a valid JDK location.
+
+https://docs.gradle.org/current/userguide/build_environment.html?_ga=2.69784400.1135948148.1497514644-587092700.1497514644
