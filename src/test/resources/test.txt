@@ -3,8 +3,6 @@ gradlew.bat --version
 https://docs.gradle.org/2.4/release-notes.html
 http://hsqldb.org/doc/2.0/guide/index.html
 
-plugin Database navigator
-
 ----
 
 You have to set the system property "java.home" and the environment variable JAVA_HOME to a valid JDK.
