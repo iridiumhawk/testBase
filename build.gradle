@@ -2,10 +2,13 @@ group 'com.cherkasov'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'application'
 
-sourceCompatibility = 1.8
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
@@ -13,5 +16,11 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     // https://mvnrepository.com/artifact/org.hsqldb/hsqldb
     testCompile group: 'org.hsqldb', name: 'hsqldb', version: '2.4.0'
+//    compile group: "org.cfg4j", name:"cfg4j-core", version: "4.4.0"
+}
 
+mainClassName = "com.cherkasov.Main"
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
 }
