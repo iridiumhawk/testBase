@@ -1,7 +1,9 @@
 package com.cherkasov;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.Properties;
 
 /**
@@ -32,10 +34,10 @@ public class Configuration {
         Properties prop = new Properties();
 
         //todo check file getting
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream(fileName)) {
-
+//        try (InputStream input = getClass().getClassLoader().getResourceAsStream(fileName)) {
+        try (FileReader reader = new FileReader(fileName)) {
             // load a properties file
-            prop.load(input);
+            prop.load(reader);
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -44,15 +46,23 @@ public class Configuration {
     }
 
     private void parseArguments(String[] args) {
-        //parse input args here
-        prop.setProperty("connectionString", getValueFromArgs(prop.getProperty("args.key.connectionString")));
-        prop.setProperty("datesFile", getValueFromArgs(prop.getProperty("args.key.datesFileName")));
+        //todo parse input args here
+        //for each args.key. check parameter and add to property
+        prop.setProperty("jdbc.connectionString",
+                getValueFromArgs(prop.getProperty("args.key.connectionString"), args));
+        prop.setProperty("datesFile",
+                getValueFromArgs(prop.getProperty("args.key.datesFileName"), args));
 
     }
 
-    private String getValueFromArgs(String property) {
+    private String getValueFromArgs(String property, String[] args) {
         //gets args and look up for key
 //        "-"+property
+        for (String arg : args) {
+            if (("-"+property).equals(arg)) {
+//                return args[i+1]; //if not null
+            }
+        }
         return "";
     }
 
@@ -62,5 +72,9 @@ public class Configuration {
 
     public void setValue(String key, String value) {
         prop.setProperty(key, value);
+    }
+
+    public void getAllProperties(PrintStream out){
+        prop.list(out);
     }
 }
