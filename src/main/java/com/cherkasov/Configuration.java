@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -62,6 +64,8 @@ public class Configuration {
             if (("-"+property).equals(arg)) {
 //                return args[i+1]; //if not null
             }
+            System.out.println(property);
+            System.out.println(arg);
         }
         return "";
     }
@@ -74,7 +78,10 @@ public class Configuration {
         prop.setProperty(key, value);
     }
 
-    public void getAllProperties(PrintStream out){
-        prop.list(out);
+    public List<String> getAllProperties(){
+//        prop.list(out);
+        List<String> result = new ArrayList<>();
+        prop.forEach((k,v) -> result.add(k+":"+v));
+        return result;
     }
 }

@@ -12,7 +12,7 @@ public class Main {
 
         loadFromSqlFile(config.getValue("sql.file"));
 
-        config.getAllProperties(System.out);
+//        config.getAllProperties(System.out);
     }
 
     private static void loadFromSqlFile(String value) {
