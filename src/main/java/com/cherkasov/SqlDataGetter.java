@@ -71,6 +71,7 @@ public class SqlDataGetter {
       //get results
       rs = st.executeQuery(sqlQuery);
 
+      System.out.println(rs.toString());
       //from result set give metadata
       ResultSetMetaData metaData = rs.getMetaData();
 
@@ -93,8 +94,9 @@ public class SqlDataGetter {
       }
 
     } catch (SQLException e) {
-      LOG.log(Level.SEVERE, "SQLException by query. Error: " + e.getMessage());
-      FileUtils.saveErrorLog(sqlQuery);
+//      LOG.log(Level.SEVERE, "SQLException by query. Error: " + e.getMessage());
+//      FileUtils.saveErrorLog(sqlQuery);
+      System.out.println("Error" + e.getMessage());
 
       return Collections.emptyList();
 
@@ -105,7 +107,7 @@ public class SqlDataGetter {
         try {
           rs.close();
         } catch (SQLException e) {
-          LOG.log(Level.SEVERE, "SQLException close resultset" + e.getMessage());
+//          LOG.log(Level.SEVERE, "SQLException close resultset" + e.getMessage());
         }
       }
     }
@@ -124,7 +126,7 @@ public class SqlDataGetter {
         conn.close();
       }
     } catch (SQLException e) {
-      LOG.log(Level.SEVERE, "SQLException by close connection" + e.getMessage());
+//      LOG.log(Level.SEVERE, "SQLException by close connection" + e.getMessage());
     }
   }
 
@@ -138,10 +140,10 @@ public class SqlDataGetter {
     try {
       Class.forName(driver);
       conn = DriverManager.getConnection(connectionUrl);
-
+      System.out.println("Established");
     } catch (ClassNotFoundException | SQLException e) {
-      LOG.log(Level.SEVERE,
-          "Exception by open connection: " + e.getMessage() + " " + driver + " " + connectionUrl);
+//      LOG.log(Level.SEVERE,
+//          "Exception by open connection: " + e.getMessage() + " " + driver + " " + connectionUrl);
     }
   }
 }
