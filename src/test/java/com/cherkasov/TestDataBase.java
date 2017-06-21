@@ -42,10 +42,10 @@ public class TestDataBase {
   public void shouldReturnEmptyResultIfQueryTimeout() {
 //    SqlDataGetter sql = new SqlDataGetter(hsqlDb.getConn());
     String query =
-        "CREATE PROCEDURE sleep(t BIGINT) "
-            + "NO SQL "
-            + "LANGUAGE JAVA PARAMETER STYLE JAVA "
-            + "EXTERNAL NAME 'CLASSPATH:java.lang.Thread.sleep';   ";
+            "CREATE PROCEDURE sleep(t BIGINT) "
+                    + "NO SQL "
+                    + "LANGUAGE JAVA PARAMETER STYLE JAVA "
+                    + "EXTERNAL NAME 'CLASSPATH:java.lang.Thread.sleep';   ";
 
 //    ExecutionTimeMeter.startTimer("sleep_query");
 
@@ -87,5 +87,5 @@ public class TestDataBase {
 
 //    List<String> result = sql.getResultsFromTable(query, conf.getValue("csv.delimiter"));
 //    ExecutionTimeMeter.stopTimer("sleep_query");
-
+  }
 }

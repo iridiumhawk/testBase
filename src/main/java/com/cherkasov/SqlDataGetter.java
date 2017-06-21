@@ -66,12 +66,15 @@ public class SqlDataGetter {
     List<String> result = new ArrayList<>();
     ResultSet rs = null;
 
+    long time = System.currentTimeMillis();
+
     try (Statement st = conn.createStatement()) {
 
+      st.setQueryTimeout(1);
       //get results
       rs = st.executeQuery(sqlQuery);
 
-      System.out.println(rs.toString());
+//      System.out.println(rs.toString());
       //from result set give metadata
       ResultSetMetaData metaData = rs.getMetaData();
 
@@ -79,9 +82,8 @@ public class SqlDataGetter {
       int numOfCols = metaData.getColumnCount();
 
       //todo add column name in the begin of file? String name = metaData.getColumnName(i);
-
+/*
       while (rs.next()) {
-
         StringJoiner sj = new StringJoiner(delimeter);
 
         for (int i = 1; i <= numOfCols; i++) {
@@ -91,7 +93,7 @@ public class SqlDataGetter {
         String desiredString = sj.toString();
 
         result.add(desiredString);
-      }
+      }*/
 
     } catch (SQLException e) {
 //      LOG.log(Level.SEVERE, "SQLException by query. Error: " + e.getMessage());
@@ -112,6 +114,9 @@ public class SqlDataGetter {
       }
     }
 
+     time = System.currentTimeMillis() - time;
+
+    System.out.println(time);
 
     return result;
   }
