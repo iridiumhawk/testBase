@@ -147,8 +147,8 @@ public class SqlDataGetter {
       conn = DriverManager.getConnection(connectionUrl);
       System.out.println("Established");
     } catch (ClassNotFoundException | SQLException e) {
-//      LOG.log(Level.SEVERE,
-//          "Exception by open connection: " + e.getMessage() + " " + driver + " " + connectionUrl);
+      System.out.println(
+          "Exception by open connection: " + e.getMessage() + " " + driver + " " + connectionUrl);
     }
   }
 }
